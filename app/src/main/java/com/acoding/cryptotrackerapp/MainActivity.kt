@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
             CryptoTrackerTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
-                        name = "Android",
+                        name = "Assndroid",
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
