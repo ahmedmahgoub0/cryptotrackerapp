@@ -1,4 +1,4 @@
-package com.acoding.cryptotrackerapp.util
+package com.acoding.cryptotrackerapp.core.presentation.util
 
 import com.acoding.cryptotrackerapp.R
 
