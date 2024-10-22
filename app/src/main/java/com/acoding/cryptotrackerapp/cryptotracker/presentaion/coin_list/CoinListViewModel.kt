@@ -6,9 +6,11 @@ import com.acoding.cryptotrackerapp.core.domain.util.onError
 import com.acoding.cryptotrackerapp.core.domain.util.onSuccess
 import com.acoding.cryptotrackerapp.cryptotracker.domain.CoinDataSource
 import com.acoding.cryptotrackerapp.cryptotracker.presentaion.model.toCoinUi
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
@@ -21,9 +23,12 @@ class CoinListViewModel(
         .onStart { loadCoins() }
         .stateIn(
             viewModelScope,
-            started = SharingStarted.WhileSubscribed(5000),
+            started = SharingStarted.WhileSubscribed(5000L),
             initialValue = CoinListState()
         )
+
+    private val _event = Channel<CoinListEvent>()
+    val event = _event.receiveAsFlow()
 
     fun onAction(action: CoinListAction) {
         when (action) {
@@ -43,9 +48,9 @@ class CoinListViewModel(
                         coins = coins.map { it.toCoinUi() }
                     )
                 }
-                .onError {
+                .onError { error ->
                     _state.value = _state.value.copy(isLoading = false)
-                    // TODO: Handle error
+                    _event.send(CoinListEvent.Error(error))
                 }
         }
     }
