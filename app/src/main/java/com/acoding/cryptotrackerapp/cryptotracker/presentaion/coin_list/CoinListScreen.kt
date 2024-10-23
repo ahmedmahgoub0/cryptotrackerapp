@@ -20,23 +20,29 @@ import com.acoding.cryptotrackerapp.ui.theme.CryptoTrackerTheme
 
 @Composable
 fun CoinListScreen(
-    state: CoinListState, modifier: Modifier = Modifier
+    state: CoinListState,
+    onAction: (CoinListAction) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     if (state.isLoading) {
         Box(
-            modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center
+            modifier = modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
         ) {
             CircularProgressIndicator()
         }
     } else {
-
         LazyColumn(
-            modifier = modifier.fillMaxSize(), verticalArrangement = Arrangement.spacedBy(8.dp)
+            modifier = modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            items(items = state.coins, key = { it.id }) { coin ->
+            items(
+                items = state.coins,
+                key = { it.id }
+            ) { coin ->
                 CoinListItem(
                     coin = coin,
-                    onCLick = { },
+                    onCLick = { onAction(CoinListAction.OnCoinClick(coin)) },
                 )
                 HorizontalDivider()
             }
@@ -48,8 +54,14 @@ fun CoinListScreen(
 @Composable
 private fun CoinListScreenPreview() {
     CryptoTrackerTheme {
-        CoinListScreen(state = CoinListState(coins = (1..100).map {
-            previewCoin.copy(id = it.toString())
-        }), modifier = Modifier.background(MaterialTheme.colorScheme.background))
+        CoinListScreen(
+            state = CoinListState(
+                coins = (1..100).map {
+                    previewCoin.copy(id = it.toString())
+                }
+            ),
+            onAction = { },
+            modifier = Modifier.background(MaterialTheme.colorScheme.background)
+        )
     }
 }

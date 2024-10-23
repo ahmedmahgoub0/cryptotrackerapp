@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class CoinListViewModel(
@@ -33,7 +34,11 @@ class CoinListViewModel(
     fun onAction(action: CoinListAction) {
         when (action) {
             is CoinListAction.OnCoinClick -> {
-                // TODO: Navigate to coin detail screen
+                _state.update {
+                    it.copy(
+                        selectedCoin = action.coinUi
+                    )
+                }
             }
         }
     }
