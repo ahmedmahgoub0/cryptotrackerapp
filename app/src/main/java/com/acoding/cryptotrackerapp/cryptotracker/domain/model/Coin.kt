@@ -1,4 +1,4 @@
-package com.acoding.cryptotrackerapp.cryptotracker.domain
+package com.acoding.cryptotrackerapp.cryptotracker.domain.model
 
 data class Coin(
     val id: String,
