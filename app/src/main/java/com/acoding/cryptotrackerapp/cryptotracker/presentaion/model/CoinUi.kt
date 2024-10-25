@@ -3,6 +3,7 @@ package com.acoding.cryptotrackerapp.cryptotracker.presentaion.model
 import androidx.annotation.DrawableRes
 import com.acoding.cryptotrackerapp.core.presentation.util.getDrawableIdForCoin
 import com.acoding.cryptotrackerapp.cryptotracker.domain.model.Coin
+import com.acoding.cryptotrackerapp.cryptotracker.presentaion.coin_details.DataPoint
 import java.text.NumberFormat
 import java.util.Locale
 
@@ -14,7 +15,8 @@ data class CoinUi(
     val marketCapUsd: DisplayableNumber,
     val priceUsd: DisplayableNumber,
     val changePercent24Hr: DisplayableNumber,
-    @DrawableRes val iconRes: Int
+    @DrawableRes val iconRes: Int,
+    val coinPriceHistory: List<DataPoint> = emptyList()
 )
 
 fun Coin.toCoinUi(): CoinUi {
