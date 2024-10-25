@@ -33,6 +33,7 @@ import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -80,13 +81,16 @@ fun CoinDetailsScreen(
                     text = coin.name,
                     color = contentColor,
                     fontSize = 40.sp,
-                    fontWeight = FontWeight.Bold
+                    lineHeight = 40.sp,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center
                 )
                 Text(
                     text = coin.symbol,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Light,
                     color = contentColor,
+                    textAlign = TextAlign.Center
                 )
                 FlowRow(
                     modifier = Modifier.fillMaxWidth(),
