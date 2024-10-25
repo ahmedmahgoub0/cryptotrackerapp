@@ -85,8 +85,11 @@ class CoinListViewModel(
                 .onSuccess { coins ->
                     _state.value = _state.value.copy(
                         isLoading = false,
-                        coins = coins.map { it.toCoinUi() }
+                        coins = coins.map { it.toCoinUi() },
                     )
+                    if (coins.isNotEmpty()) {
+                        loadCoinHistory(coins.first().toCoinUi())
+                    }
                 }
                 .onError { error ->
                     _state.value = _state.value.copy(isLoading = false)
