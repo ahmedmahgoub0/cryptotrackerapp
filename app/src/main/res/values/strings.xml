@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Crypto Tracker</string>
+    <string name="request_timeout">Request Timeout</string>
+    <string name="too_many_requests">Too many requests</string>
+    <string name="no_internet">No internet connection</string>
+    <string name="server_error">something went wrong</string>
+    <string name="serialization">Serialization error</string>
+    <string name="unknown_error">Unhandled exception</string>
+    <string name="market_cap">Market cap</string>
+    <string name="price">Price</string>
+    <string name="change_last_24_hours">Change last 24h</string>
 </resources>
