@@ -29,8 +29,7 @@ fun CoinListScreen(
             modifier = modifier.fillMaxSize(),
             contentAlignment = Alignment.Center
         ) {
-//            CircularProgressIndicator
-            CoinListShimmerLayout(modifier = Modifier.fillMaxSize())
+            CoinListShimmerLayout(modifier = modifier)
         }
     } else {
         LazyColumn(

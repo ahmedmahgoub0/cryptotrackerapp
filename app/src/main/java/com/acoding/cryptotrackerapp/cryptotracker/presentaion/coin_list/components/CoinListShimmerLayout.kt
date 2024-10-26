@@ -38,7 +38,7 @@ fun CoinListShimmerLayout(
 }
 
 @Composable
-fun CoinListItemShimmerLayout(
+private fun CoinListItemShimmerLayout(
     modifier: Modifier = Modifier
 ) {
     Row(
