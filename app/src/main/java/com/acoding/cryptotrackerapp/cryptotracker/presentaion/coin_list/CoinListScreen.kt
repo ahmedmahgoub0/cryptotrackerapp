@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -15,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import com.acoding.cryptotrackerapp.cryptotracker.presentaion.coin_list.components.CoinListItem
+import com.acoding.cryptotrackerapp.cryptotracker.presentaion.coin_list.components.CoinListShimmerLayout
 import com.acoding.cryptotrackerapp.cryptotracker.presentaion.coin_list.components.previewCoin
 import com.acoding.cryptotrackerapp.ui.theme.CryptoTrackerTheme
 
@@ -29,7 +29,7 @@ fun CoinListScreen(
             modifier = modifier.fillMaxSize(),
             contentAlignment = Alignment.Center
         ) {
-            CircularProgressIndicator()
+            CoinListShimmerLayout(modifier = modifier)
         }
     } else {
         LazyColumn(
